@@ -6,7 +6,7 @@
 #    By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/05/04 14:58:34 by quruiz       #+#   ##    ##    #+#        #
-#    Updated: 2018/05/04 15:01:39 by quruiz      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/05/04 18:13:05 by quruiz      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -19,8 +19,8 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-%.o: %.c
-		@gcc $(FLAG) -c $^ -o $@
+%.o: %.c include/filler.h
+		@gcc $(FLAG) -c $< -o $@
 
 $(NAME): $(OBJ)
 		@make -C libft/

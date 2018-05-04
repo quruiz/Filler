@@ -6,7 +6,7 @@
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 14:00:54 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/04 02:11:39 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/04 18:08:21 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,7 +38,7 @@ int		get_map(t_flr *box)
 	return (1);
 }
 
-int     main(void)
+int		main(void)
 {
 	t_flr	*box;
 	char	*line;

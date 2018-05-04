@@ -6,7 +6,7 @@
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 16:27:52 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/04 02:10:39 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/04 18:12:33 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,17 +19,17 @@ int		check_around(t_flr *box, int y, int x, int c)
 		return (1);
 	if (y - 1 >= 0 && box->hmap[y - 1][x] == c)
 		return (1);
-	if (x + 1 < box->map_x && y - 1 >= 0 && box->hmap[y - 1][x + 1] == c)
+	if (x + 1 < MAPX && y - 1 >= 0 && box->hmap[y - 1][x + 1] == c)
 		return (1);
 	if (x - 1 >= 0 && box->hmap[y][x - 1] == c)
 		return (1);
-	if (x + 1 < box->map_x && box->hmap[y][x + 1] == c)
+	if (x + 1 < MAPX && box->hmap[y][x + 1] == c)
 		return (1);
-	if (x - 1 >= 0 && y + 1 < box->map_y && box->hmap[y + 1][x - 1] == c)
+	if (x - 1 >= 0 && y + 1 < MAPY && box->hmap[y + 1][x - 1] == c)
 		return (1);
-	if (y + 1 < box->map_y && box->hmap[y + 1][x] == c)
+	if (y + 1 < MAPY && box->hmap[y + 1][x] == c)
 		return (1);
-	if (x + 1 < box->map_x && y + 1 < box->map_y && box->hmap[y + 1][x + 1] == c)
+	if (x + 1 < MAPX && y + 1 < MAPY && box->hmap[y + 1][x + 1] == c)
 		return (1);
 	return (0);
 }
@@ -77,7 +77,7 @@ void	init_hmap(t_flr *box, char *line, int len, int j)
 
 int		create_hmap(t_flr *box)
 {
-	int 	i;
+	int		i;
 	int		max;
 
 	i = 0;

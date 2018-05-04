@@ -6,7 +6,7 @@
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 15:38:59 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/09 18:39:22 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/04 18:07:15 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,7 +60,7 @@ void	ft_get_width(t_sgmt *box, va_list arg)
 		box->i += 1;
 	}
 	if (FLAGS->moins == 1)
-			FLAGS->wid *= -1;
+		FLAGS->wid *= -1;
 }
 
 void	ft_get_prec(t_sgmt *box, va_list arg)

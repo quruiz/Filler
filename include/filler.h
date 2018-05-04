@@ -6,7 +6,7 @@
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 14:03:17 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/04 02:14:16 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/04 18:11:35 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,6 +15,8 @@
 # define FILLER_H
 # define OPLAYER ((box->player == 'O') ? 'X' : 'O')
 # define UPLAYER box->player
+# define MAPY box->map_y
+# define MAPX box->map_x
 # include "../libft/libft/libft.h"
 # include "../libft/get_next_line/get_next_line.h"
 # include "../libft/ft_printf/ft_printf.h"
