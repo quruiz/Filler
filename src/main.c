@@ -6,7 +6,7 @@
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 14:00:54 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/04 18:08:21 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/10 17:20:43 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,10 @@ int		get_map(t_flr *box)
 	i = 0;
 	get_next_line(0, &line);
 	if (ft_strstr(line, "Plateau ") == NULL)
+	{
+		ft_strdel(&line);
 		return (filler_error(box, "0001"));
+	}
 	box->map_y = ft_atoi(ft_strchr(line, ' '));
 	box->map_x = ft_atoi(ft_strrchr(line, ' '));
 	ft_strdel(&line);
@@ -47,7 +50,10 @@ int		main(void)
 		return (0);
 	get_next_line(0, &line);
 	if (ft_strstr(line, "$$$ exec p") == NULL)
+	{
+		ft_strdel(&line);
 		return (filler_error(box, "0001"));
+	}
 	UPLAYER = (ft_atoi(line + 10) == 1) ? 'O' : 'X';
 	ft_strdel(&line);
 	while (1)
