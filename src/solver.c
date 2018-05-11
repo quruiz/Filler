@@ -6,7 +6,7 @@
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 17:31:16 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/04 18:08:31 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 13:57:33 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -55,10 +55,10 @@ void	solver(t_flr *box)
 
 	i = 0;
 	save_score(box, 0, 0, 1000000);
-	while (i < (box->map_y - box->piece_y))
+	while (i <= (box->map_y - box->piece_y))
 	{
 		j = 0;
-		while (j < (box->map_x - box->piece_x))
+		while (j <= (box->map_x - box->piece_x))
 		{
 			is_possible(box, i, j);
 			j++;
