@@ -1,80 +1,88 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.c                                  .::    .:/ .      .::   */
+/*   GNL.c                                            .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
+/*   By: quruiz <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/14 12:45:05 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/10 17:21:32 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/06 18:52:10 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int		ft_read(char **str, int fd)
+static t_gnl		*get_fd(t_gnl **file_fd, const int fd)
 {
-	int		ret;
-	char	*s;
-	char	buf[BUFF_SIZE + 1];
+	t_gnl	*tmp;
 
-	if ((ret = read(fd, buf, BUFF_SIZE)) == -1)
-		return (-1);
-	buf[ret] = '\0';
-	s = *str;
-	*str = ft_strjoin(*str, buf);
-	if (*s != 0)
-		free(s);
-	return (ret);
+	tmp = *file_fd;
+	while (tmp)
+	{
+		if (tmp->fd == fd)
+			return (tmp);
+		tmp = tmp->next;
+	}
+	tmp = (t_gnl *)malloc(sizeof(t_gnl));
+	tmp->s = ft_strnew(0);
+	tmp->fd = fd;
+	tmp->next = *file_fd;
+	*file_fd = tmp;
+	return (tmp);
 }
 
-static int		ft_get_line(char **str, char **line, char *s)
+static char			*get_line(t_gnl *list)
 {
-	int		i;
-	char	*join;
+	char		*str;
+	char		*tmp;
+	size_t		i;
 
 	i = 0;
-	if (*s == '\n')
-		i = 1;
-	*s = 0;
-	*line = ft_strjoin("", *str);
-	if (i == 0 && ft_strlen(*str) != 0)
+	while (list->s[i] != '\n' && list->s[i] != '\0')
+		i++;
+	str = (char *)malloc(sizeof(char) * i + 1);
+	str[i] = '\0';
+	i = 0;
+	while (list->s[i] != '\n' && list->s[i] != '\0')
 	{
-		*str = ft_strnew(1);
-		return (1);
+		str[i] = list->s[i];
+		i++;
 	}
-	else if (i == 0 && !(ft_strlen(*str)))
-		return (0);
-	join = *str;
-	*str = ft_strjoin(s + 1, "");
-	free(join);
-	return (i);
+	if (i < ft_strlen(list->s))
+	{
+		tmp = list->s;
+		list->s = ft_strsub(list->s, i + 1, (ft_strlen(list->s) - (i + 1)));
+		free(tmp);
+	}
+	else
+		ft_strclr(list->s);
+	return (str);
 }
 
-int				get_next_line(int const fd, char **line)
+int					get_next_line(const int fd, char **line)
 {
-	int			ret;
-	char		*s;
-	static char	*str;
+	static t_gnl	*file_fd;
+	t_gnl			*list;
+	char			*tmp;
+	char			buf[BUFF_SIZE + 1];
+	size_t			ret;
 
-	if (str == 0)
-		str = "";
-	if (!line || BUFF_SIZE < 1)
+	tmp = NULL;
+	if (fd < 0 || line == NULL || BUFF_SIZE < 1 || read(fd, buf, 0) == -1)
 		return (-1);
-	ret = BUFF_SIZE;
-	while (line)
+	list = get_fd(&file_fd, fd);
+	while ((ret = read(fd, buf, BUFF_SIZE)))
 	{
-		s = str;
-		while (*s || ret < BUFF_SIZE)
-		{
-			if (*s == '\n' || *s == 0 || *s == -1)
-				return (ft_get_line(&str, line, s));
-			s++;
-		}
-		ret = ft_read(&str, fd);
-		if (ret == -1)
-			return (-1);
+		buf[ret] = '\0';
+		tmp = list->s;
+		list->s = ft_strjoin(list->s, buf);
+		free(tmp);
+		if (ft_strchr(list->s, '\n'))
+			break ;
 	}
-	return (0);
+	if (ret < BUFF_SIZE && !ft_strlen(list->s))
+		return (0);
+	*line = get_line(list);
+	return (1);
 }

@@ -6,13 +6,20 @@
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 17:31:16 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 13:57:33 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/12 16:26:11 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/filler.h"
 
+void	print_coor(int x, int y)
+{
+	ft_putnbr(x);
+	ft_putchar(' ');
+	ft_putnbr(y);
+	ft_putchar('\n');
+}
 void	save_score(t_flr *box, int i, int j, int score)
 {
 	box->best[0] = i;
@@ -65,5 +72,5 @@ void	solver(t_flr *box)
 		}
 		i++;
 	}
-	ft_printf("%d %d\n", box->best[0], box->best[1]);
+	print_coor(box->best[0], box->best[1]);
 }

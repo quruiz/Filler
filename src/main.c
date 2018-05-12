@@ -6,7 +6,7 @@
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 14:00:54 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/10 17:20:43 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/12 16:56:51 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,7 +35,8 @@ int		get_map(t_flr *box)
 	while (i < box->map_y)
 	{
 		get_next_line(0, &line);
-		box->map[i] = line;
+		box->map[i] = ft_strdup(line);
+		ft_strdel(&line);
 		i++;
 	}
 	return (1);

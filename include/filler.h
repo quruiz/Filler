@@ -6,7 +6,7 @@
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 14:03:17 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/04 18:11:35 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/12 16:28:31 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,6 @@
 # define MAPX box->map_x
 # include "../libft/libft/libft.h"
 # include "../libft/get_next_line/get_next_line.h"
-# include "../libft/ft_printf/ft_printf.h"
 
 typedef struct			s_flr
 {

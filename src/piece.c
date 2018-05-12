@@ -6,7 +6,7 @@
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 16:29:01 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/10 16:57:33 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/12 16:57:01 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,7 +39,7 @@ int		get_piece(t_flr *box)
 	int		start;
 	int		i;
 
-	i = -1;
+	i = 0;
 	start = 0;
 	get_next_line(0, &line);
 	if (ft_strstr(line, "Piece ") == NULL)
@@ -52,11 +52,12 @@ int		get_piece(t_flr *box)
 	ft_strdel(&line);
 	if (!(box->coor = malloc(sizeof(int *) * 2)))
 		return (filler_error(box, "1001"));
-	while (++i < box->piece_y)
+	while (i < box->piece_y)
 	{
 		get_next_line(0, &line);
 		start = get_piece_coor(box, i, start, line);
 		ft_strdel(&line);
+		i++;
 	}
 	box->size = start;
 	return (1);
