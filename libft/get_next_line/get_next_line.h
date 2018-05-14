@@ -6,7 +6,7 @@
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/04 17:08:25 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/12 16:59:10 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/14 13:42:46 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
-# define BUFF_SIZE 4096
+# define BUFF_SIZE 1
 
 typedef struct	s_gnl
 {
