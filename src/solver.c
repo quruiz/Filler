@@ -6,7 +6,7 @@
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 17:31:16 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/12 16:26:11 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/14 13:39:15 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,6 +20,7 @@ void	print_coor(int x, int y)
 	ft_putnbr(y);
 	ft_putchar('\n');
 }
+
 void	save_score(t_flr *box, int i, int j, int score)
 {
 	box->best[0] = i;
