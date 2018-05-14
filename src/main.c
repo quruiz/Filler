@@ -6,7 +6,7 @@
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 14:00:54 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/12 16:56:51 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/14 16:32:58 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@ int		get_map(t_flr *box)
 
 	i = 0;
 	get_next_line(0, &line);
-	if (ft_strstr(line, "Plateau ") == NULL)
+	if (!line || ft_strstr(line, "Plateau ") == NULL)
 	{
 		ft_strdel(&line);
 		return (filler_error(box, "0001"));
@@ -32,9 +32,8 @@ int		get_map(t_flr *box)
 		return (filler_error(box, "0001"));
 	get_next_line(0, &line);
 	ft_strdel(&line);
-	while (i < box->map_y)
+	while (i < box->map_y && get_next_line(0, &line))
 	{
-		get_next_line(0, &line);
 		box->map[i] = ft_strdup(line);
 		ft_strdel(&line);
 		i++;
@@ -50,7 +49,7 @@ int		main(void)
 	if (!(box = malloc(sizeof(t_flr))))
 		return (0);
 	get_next_line(0, &line);
-	if (ft_strstr(line, "$$$ exec p") == NULL)
+	if (!line || ft_strstr(line, "$$$ exec p") == NULL)
 	{
 		ft_strdel(&line);
 		return (filler_error(box, "0001"));
