@@ -6,7 +6,7 @@
 #    By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/05/04 14:58:34 by quruiz       #+#   ##    ##    #+#        #
-#    Updated: 2018/05/15 19:12:11 by quruiz      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/05/16 14:07:50 by quruiz      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -21,20 +21,20 @@ OBJ = $(SRC:.c=.o)
 all: lib $(NAME)
 
 %.o: %.c $(HEADER)
-		gcc $(FLAG) -c $< -o $@
+		@gcc $(FLAG) -c $< -o $@
 
 lib:
-		make -C libft
+		@make -C libft
 
 $(NAME): $(OBJ) $(LIBFT)
-		gcc $(FLAG) $(OBJ) $(LIBFT) -o $(NAME)
+		@gcc $(FLAG) $(OBJ) $(LIBFT) -o $(NAME)
 
 clean:
-		make clean -C libft/
-		rm -f $(OBJ)
+		@make clean -C libft/
+		@rm -f $(OBJ)
 
 fclean: clean
-		make fclean -C libft/
-		rm -f $(NAME)
+		@make fclean -C libft/
+		@rm -f $(NAME)
 
 re: fclean all

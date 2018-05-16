@@ -6,7 +6,7 @@
 #    By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/18 12:41:18 by quruiz       #+#   ##    ##    #+#        #
-#    Updated: 2018/05/15 18:48:00 by quruiz      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/05/16 14:07:28 by quruiz      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -39,16 +39,16 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 %.o: %.c $(HEADER)
-		gcc $(FLAG) -c $< -o $@
+		@gcc $(FLAG) -c $< -o $@
 
 $(NAME): $(OBJ)
-		ar rc $(NAME) $(OBJ) $@ $^
-		ranlib $(NAME)
+		@ar rc $(NAME) $(OBJ) $@ $^
+		@ranlib $(NAME)
 
 clean:
-		rm -f $(OBJ)
+		@rm -f $(OBJ)
 
 fclean: clean
-		rm -f $(NAME)
+		@rm -f $(NAME)
 
 re: fclean all
